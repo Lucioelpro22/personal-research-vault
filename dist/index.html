@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Research Vault</title>
+  <meta name="description" content="Tu biblioteca de investigación conectada." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="rail">
+      <div class="mark">R<span>V</span></div>
+      <nav aria-label="Navegación principal">
+        <button class="nav active" title="Biblioteca">▦</button>
+        <button class="nav" title="Grafo">⌘</button>
+        <button class="nav" title="Destacados">◇</button>
+        <button class="nav" title="Ajustes">⚙</button>
+      </nav>
+      <div class="avatar">AL</div>
+    </aside>
+
+    <main>
+      <header>
+        <div>
+          <div class="eyebrow">PERSONAL RESEARCH VAULT</div>
+          <h1>Biblioteca <span>conectada</span></h1>
+        </div>
+        <div class="header-actions">
+          <label class="search"><span>⌕</span><input id="search" placeholder="Buscar en 128 fuentes…" /></label>
+          <button class="primary" id="addBtn">＋ Añadir fuente</button>
+        </div>
+      </header>
+
+      <section class="stats" aria-label="Resumen">
+        <div><strong>128</strong><span>fuentes</span></div>
+        <div><strong>36</strong><span>relaciones</span></div>
+        <div><strong>14</strong><span>resúmenes</span></div>
+        <div class="pulse"><i></i><span>Última síntesis · hoy, 09:42</span></div>
+      </section>
+
+      <div class="workspace">
+        <section class="library">
+          <div class="toolbar">
+            <div class="tabs" role="tablist">
+              <button class="tab active" data-filter="all">Todo <b>128</b></button>
+              <button class="tab" data-filter="pdf">PDFs <b>42</b></button>
+              <button class="tab" data-filter="link">Enlaces <b>61</b></button>
+              <button class="tab" data-filter="note">Notas <b>25</b></button>
+            </div>
+            <button class="view-toggle" id="viewToggle">☷</button>
+          </div>
+          <div id="cards" class="cards"></div>
+        </section>
+
+        <aside class="inspector">
+          <div class="inspector-head"><span>FUENTE SELECCIONADA</span><button id="closeInspector">×</button></div>
+          <div id="detail"></div>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="addDialog">
+    <form method="dialog" id="addForm">
+      <div class="modal-head"><div><span class="eyebrow">NUEVA ENTRADA</span><h2>Añadir al vault</h2></div><button value="cancel">×</button></div>
+      <div class="kind-picker">
+        <label><input type="radio" name="kind" value="link" checked><span>↗<small>Enlace</small></span></label>
+        <label><input type="radio" name="kind" value="pdf"><span>▤<small>PDF</small></span></label>
+        <label><input type="radio" name="kind" value="note"><span>✎<small>Nota</small></span></label>
+      </div>
+      <label class="field">Título<input name="title" required placeholder="¿Qué estás investigando?" /></label>
+      <label class="field">URL o contenido<textarea name="content" placeholder="Pega un enlace o escribe una nota…"></textarea></label>
+      <label class="field">Etiquetas<input name="tags" placeholder="IA, diseño, sistemas" /></label>
+      <div class="modal-actions"><button value="cancel">Cancelar</button><button class="primary" value="default" id="saveBtn">Guardar fuente</button></div>
+    </form>
+  </dialog>
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
+
