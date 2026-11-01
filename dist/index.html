@@ -9,16 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="enhancements.css" />
 </head>
 <body>
   <div class="shell">
     <aside class="rail">
       <div class="mark">R<span>V</span></div>
       <nav aria-label="Navegación principal">
-        <button class="nav active" title="Biblioteca">▦</button>
-        <button class="nav" title="Grafo">⌘</button>
-        <button class="nav" title="Destacados">◇</button>
-        <button class="nav" title="Ajustes">⚙</button>
+        <button class="nav active" data-view="library" title="Biblioteca">▦</button>
+        <button class="nav" data-view="graph" title="Mapa de relaciones">⌘</button>
+        <button class="nav" data-view="favorites" title="Destacados">◇</button>
       </nav>
       <div class="avatar">AL</div>
     </aside>
@@ -30,19 +30,22 @@
           <h1>Biblioteca <span>conectada</span></h1>
         </div>
         <div class="header-actions">
-          <label class="search"><span>⌕</span><input id="search" placeholder="Buscar en 128 fuentes…" /></label>
+          <label class="search"><span>⌕</span><input id="search" placeholder="Buscar en tu vault…" /></label>
+          <button class="icon-btn" id="exportBtn" title="Exportar vault">⇩</button>
+          <button class="icon-btn" id="importBtn" title="Importar vault">⇧</button>
+          <input type="file" id="importFile" accept="application/json" hidden />
           <button class="primary" id="addBtn">＋ Añadir fuente</button>
         </div>
       </header>
 
       <section class="stats" aria-label="Resumen">
-        <div><strong>128</strong><span>fuentes</span></div>
-        <div><strong>36</strong><span>relaciones</span></div>
-        <div><strong>14</strong><span>resúmenes</span></div>
-        <div class="pulse"><i></i><span>Última síntesis · hoy, 09:42</span></div>
+        <div><strong id="sourceCount">0</strong><span>fuentes</span></div>
+        <div><strong id="relationCount">0</strong><span>relaciones</span></div>
+        <div><strong id="favoriteCount">0</strong><span>destacadas</span></div>
+        <div class="pulse"><i></i><span id="syncStatus">Guardado local automático</span></div>
       </section>
 
-      <div class="workspace">
+      <div class="workspace" id="libraryView">
         <section class="library">
           <div class="toolbar">
             <div class="tabs" role="tablist">
@@ -61,6 +64,10 @@
           <div id="detail"></div>
         </aside>
       </div>
+      <section class="graph-view" id="graphView" hidden>
+        <div class="graph-head"><div><span class="eyebrow">MAPA DE CONOCIMIENTO</span><h2>Relaciones entre fuentes</h2></div><p>Las líneas representan temas y lecturas conectadas.</p></div>
+        <div class="graph-canvas" id="graphCanvas"></div>
+      </section>
     </main>
   </div>
 
