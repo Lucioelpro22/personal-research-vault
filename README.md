@@ -11,6 +11,10 @@ A polished personal research workspace for collecting links, PDFs, and notes, th
 - Card and compact list views
 - Source summaries with inline citations
 - Related-reading and connection discovery
+- Interactive knowledge map
+- Browser-local persistence
+- Favorites and live library statistics
+- JSON backup and restore
 - Responsive interface for desktop and mobile
 - Lightweight, dependency-free static build
 
@@ -20,6 +24,7 @@ A polished personal research workspace for collecting links, PDFs, and notes, th
 dist/
   index.html    Application shell
   styles.css    Responsive visual system
+  enhancements.css  v2 interaction and graph styles
   app.js        Demo data and interactions
 .openai/
   hosting.json  OpenAI Sites deployment configuration
@@ -35,7 +40,7 @@ npx serve dist
 
 ## Status
 
-This repository contains the polished interactive prototype. Source ingestion, PDF extraction, persistent storage, and model-backed synthesis are represented in the interface and are ready to be connected to a production backend.
+Version 2 is a functional local-first prototype: additions, favorites and deletions persist in the browser, while JSON export/import provides portable backups. Automated PDF extraction and model-backed synthesis are the next production integration layer.
 
 ## License
 
